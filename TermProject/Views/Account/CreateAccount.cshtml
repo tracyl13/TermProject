@@ -14,6 +14,27 @@
     </head>
 
     <body>
+    
+    <form asp-controller="Account" asp-action="CreateAccount" method="POST">
+        <h1>Create Account</h1>
+
+        <label>Email:</label>
+        <input id="txtEmail" name="Email" type="text" />
+
+        <label>Password:</label>
+        <input id="txtPassword" name="Password" type="text" />
+
+        <label>In what city were you born?</label>
+        <input id="txtSecurityQuestionOne" name="SecurityQuestionOne" type="text" />
+
+        <label>What street did you grow up on?</label>
+        <input id="txtSecurityQuestionTwo" name="SecurityQuestionTwo" type="text" />
+
+        <label>What is your favorite food?</label>
+        <input id="txtSecurityQuestionThree" name="SecurityQuestionThree" type="text" />
+
+        <button id="btnCreateAccount" name="btnCreateAccount" type="submit" value="Create Account" ></button>
+    </form>
 
     </body>
 
