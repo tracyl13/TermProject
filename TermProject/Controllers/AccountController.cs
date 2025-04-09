@@ -7,23 +7,36 @@ namespace TermProject.Controllers
     public class AccountController : Controller
     {
         
-        public IActionResult CreateAccount(AccountModel Account)
+        public IActionResult CreateAccount()
         {
-            List<AccountModel> accountType = new List<AccountModel>
+            return View();
+        }
+
+        
+        [HttpPost]
+        public IActionResult CreateAccountSubmit(Account account)
+        {
+            /*List<Account> accountType = new List<Account>
             {
-                new AccountModel { AccountType = "Represenative"},
-                new AccountModel { AccountType = "Reviewer"},
+                new Account { AccountType = "Represenative"},
+                new Account { AccountType = "Reviewer"},
             };
 
             ViewBag.AccountType = new SelectList(accountType, "AccountType");
 
-            Account.Email = Request.Form["Email"].ToString();
-            Account.Password = Request.Form["Password"].ToString();
-            Account.CreateAccount(Account);
-            return View("~/Views/Account/CreateAccount.cshtml");
+            account.Email = Request.Form["Email"].ToString();
+            account.Password = Request.Form["Password"].ToString();
+            //Account.CreateAccount(Account);
+            return View("~/Views/Account/CreateAccount.cshtml");*/
+            return RedirectToAction("Login");
         }
 
-        
+        public IActionResult ReturnToLogin()
+        {
+            return RedirectToAction("Login");
+        }
+
+
         public IActionResult Login()
         {
             return View();

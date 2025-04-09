@@ -25,6 +25,6 @@ app.UseAuthorization();
 //This is where the route is set for mozell when ran. Chnge controller and action to a main page.
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Account}/{action=CreateAccount}/{id?}");
+    pattern: "{controller=Main}/{action=Main}/{id?}");
 
 app.Run();
