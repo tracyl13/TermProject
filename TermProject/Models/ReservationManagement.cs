@@ -1,13 +1,12 @@
 ﻿using System.Data.SqlClient;
 using System.Data;
-using TermProject.Models;
 using Utilities;
 
-namespace TermProject.Controllers
+namespace TermProject.Models
 {
     public class ReservationManagement
     {
-        //Shows all reservations made for the restaurant. Takes in the restaurant ID to find it.
+        //Get all reservation for a restaurant
         public DataSet GetReservation(Reservation Reservation)
         {
             DBConnect objDB = new DBConnect();
