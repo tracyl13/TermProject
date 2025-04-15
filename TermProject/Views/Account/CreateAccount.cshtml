@@ -10,12 +10,17 @@
 
 <html>
     <head>
+    <script>
+        function returnToLogin() {
+            window.location.href = '@Url.Action("ReturnToLogin", "Account")';
+        }
+    </script>
         <title>Create Account</title>
     </head>
 
     <body>
     
-    <form asp-controller="Account" asp-action="CreateAccount" method="POST">
+    <form asp-controller="Account" asp-action="CreateAccount" method="post">
         <h1>Create Account</h1>
 
         <label>Email:</label>
@@ -33,7 +38,10 @@
         <label>What is your favorite food?</label>
         <input id="txtSecurityQuestionThree" name="SecurityQuestionThree" type="text" />
 
-        <button id="btnCreateAccount" name="btnCreateAccount" type="submit" value="Create Account" ></button>
+        <button id="btnCreateAccount" name="btnCreateAccount" type="submit" value="Create Account" >Create Account</button>
+
+        <button id="btnReturnToLogin" name="btnReturnToLogin" type="button" onclick="returnToLogin()">Return To Login</button>
+        
     </form>
 
     </body>
