@@ -16,30 +16,93 @@
         }
     </script>
         <title>Create Account</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .navbar {
+            background-color: #493939;
+            font-family: serif;
+            letter-spacing: 0.1rem;
+            color: white;
+            padding: 0.5rem;
+        }
+
+            .navbar .navbar-brand,
+            .navbar .nav-link {
+                color: white;
+            }
+
+            .navbar nav-item, .navbar .nav-link {
+                color: white;
+            }
+
+                .navbar .nav-link:hover {
+                    color: lightblue;
+                }
+
+        #frmAccount {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 5% auto;
+            padding: 20px;
+            color: #493939;
+            background-color: #D5C8E5;
+        }
+
+        .frmAccount .btn {
+            flex-direction: row;
+            margin: 5px;
+        }
+
+    </style>
     </head>
 
     <body>
+
+    <nav class="navbar navbar-expand">
+        <div class="container-fluid">
+            <a class="navbar-brand fs-3" id="brandName">Vyrn Review</a>
+            <ul class="navbar-nav" id="navLinks" runat="server">
+                <li class="nav-item">
+                    <a href="/Main/Main" class="nav-link fs-5">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Account/Login" class="nav-link fs-5">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     
-    <form asp-controller="Account" asp-action="CreateAccount" method="post">
+    @model Account
+
+    <form id="frmAccount" asp-controller="Account" asp-action="CreateAccount" method="post">
         <h1>Create Account</h1>
 
-        <label>Email:</label>
-        <input id="txtEmail" name="Email" type="text" />
+        <label asp-for="Email">Email:</label>
+        <input asp-for="Email" class="form-control"/>
+        <span asp-validation-for="Email" class="text-danger"></span>
 
-        <label>Password:</label>
-        <input id="txtPassword" name="Password" type="text" />
+        <label asp-for="Password">Password:</label>
+        <input asp-for="Password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
 
-        <label>In what city were you born?</label>
-        <input id="txtSecurityQuestionOne" name="SecurityQuestionOne" type="text" />
+        <label asp-for="SecurityQuestionOne">In what city were you born?</label>
+        <input asp-for="SecurityQuestionOne" class="form-control" />
+        <span asp-validation-for="SecurityQuestionOne" class="text-danger"></span>
 
-        <label>What street did you grow up on?</label>
-        <input id="txtSecurityQuestionTwo" name="SecurityQuestionTwo" type="text" />
+        <label asp-for ="SecurityQuestionTwo">What street did you grow up on?</label>
+        <input asp-for="SecurityQuestionTwo" class="form-control" />
+        <span asp-validation-for="SecurityQuestionTwo" class="text-danger"></span>
 
-        <label>What is your favorite food?</label>
-        <input id="txtSecurityQuestionThree" name="SecurityQuestionThree" type="text" />
+        <label asp-for="SecurityQuestionThree">What is your favorite food?</label>
+        <input asp-for="SecurityQuestionThree" class="form-control" />
+        <span asp-validation-for="SecurityQuestionThree" class="text-danger"></span>
 
         <button id="btnCreateAccount" name="btnCreateAccount" type="submit" value="Create Account" >Create Account</button>
-
         <button id="btnReturnToLogin" name="btnReturnToLogin" type="button" onclick="returnToLogin()">Return To Login</button>
         
     </form>
