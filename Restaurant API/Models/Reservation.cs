@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TermProject.Models
+namespace Restaurant_API.Models
 {
     public class Reservation
     {

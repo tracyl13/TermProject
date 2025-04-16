@@ -6,7 +6,8 @@ using System.Web;
 //using System.Web.UI;
 //using System.Web.UI.WebControls;
 
-//using System.Web.Script.Serialization;  // needed for JSON serializers
+//using System.Web.Script.Serialization; // needed for JSON serializers
+using System.Text.Json;
 using System.IO;                        // needed for Stream and Stream Reader
 using System.Net;                       // needed for the Web Request
 using System.Data;                      // needed for DataSet class
@@ -41,10 +42,12 @@ namespace TermProject.Controllers
             return reservations;
         }
 
-        public IActionResult CreateReservation()
+        [HttpPost]
+        public IActionResult CreateReservation(Reservation reservation)
         {
-            return View();
+            return View(reservation);
         }
+
 
         //Used to test if page load works
         public IActionResult ManageReservation()
@@ -70,6 +73,31 @@ namespace TermProject.Controllers
 
             return View(reservationList);
         }
+
+
+        public IActionResult ManageReservationAPI()
+        {
+            String url = "https://cis-iis2.temple.edu/Spring2025/CIS3342_tug19492/Restaurant_API/api/Reservation/GetReservations";
+
+            Reservation reservation = new Reservation();
+            reservation.RestaurantID = 1;
+
+            // Create an HTTP Web Request and get the HTTP Web Response from the server.
+            WebRequest request = WebRequest.Create(url);
+            WebResponse response = request.GetResponse();
+
+            // Read the data from the Web Response, which requires working with streams.
+            Stream theDataStream = response.GetResponseStream();
+            StreamReader reader = new StreamReader(theDataStream);
+            String data = reader.ReadToEnd();
+            reader.Close();
+            response.Close();
+
+            // Deserialize a JSON string that contains an array of JSON objects into a collection of Customer objects.
+            JsonSerializer.Deserialize<Reservation>(data);
+            return View(data);
+        }
+
 
         public IActionResult ModifyReservation()
         {

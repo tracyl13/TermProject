@@ -7,6 +7,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//Configure the Web API to handle XML data
+builder.Services.AddMvc().AddXmlSerializerFormatters();
+
+//Condifure the JSON serialization to use PascalCase for naming JSON properties
+builder.Services.AddMvc().AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
 
 builder.Services.AddCors(options =>
 {
