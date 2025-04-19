@@ -61,7 +61,7 @@
 
         <div class="card-container">
             <div class="card-content">
-                <form asp-controller="Reservation" asp-action="CreateReservation" method="POST">
+                <form asp-controller="Reservation" asp-action="CreateReservationSubmit" method="POST">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                     <h3>Identification</h3>
@@ -87,7 +87,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label asp-for="Email">Email:</label>
-                            <input asp-for="Email" class="form-control" type="email" />
+                            <input asp-for="Email" class="form-control"/>
                             <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
                     </div>
@@ -122,6 +122,8 @@
 
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
+
+                <label>@ViewBag.Status</label>
             </div>
         </div>
     </div>

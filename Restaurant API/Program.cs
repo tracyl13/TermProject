@@ -18,10 +18,10 @@ builder.Services.AddCors(options =>
     options.AddPolicy("Access-Control-Allow-Origin", builder =>
     {
         builder.AllowAnyOrigin()  //allows requests from any origin
-          //    .WithOrigins("http://www.temple.edu")  //allows requests from only this domain (safer)
+                                  //    .WithOrigins("http://www.temple.edu")  //allows requests from only this domain (safer)
                .AllowAnyMethod()      //allows any HTTP method in the request
-               .AllowAnyHeader()      //allows any headers in the request
-               .AllowCredentials();
+               .AllowAnyHeader();      //allows any headers in the request
+         //      .AllowCredentials(); //Commented out because I was getting an error when launching
 
     });  //end AllowPolicy()
 });   //end AddCors()

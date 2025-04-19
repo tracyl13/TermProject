@@ -54,6 +54,8 @@
         </div>
     </nav>
 
+    
+
     <h2>Manage Reservations</h2>
     <p>Press the corresponding button to confirm, modify, or delete a reservation</p>
 
@@ -90,19 +92,13 @@
                             <td>@reservation.PartySize</td>
                             <td>@reservation.SpecialRequest</td>
                             <td>
-                                <form asp-controller="Reservation" asp-action="ConfirmReservation" method="post">
-                                    <input type="hidden" name="index" value="@Model.IndexOf(reservation)" />
-                                    <button type="submit" class="btn btn-success">Confirm</button>
-                                </form>
+                                <a asp-controller="Reservation" asp-action="ConfirmReservation" asp-route-index="@Model.IndexOf(reservation)" class="btn btn-success">Confirm</a>
                             </td>
                             <td>
                                 <a asp-controller="Reservation" asp-action="ModifyReservation" asp-route-id="@reservation.ReservationID" class="btn btn-info">Modify</a>
                             </td>
                             <td>
-                                <form asp-controller="Reservation" asp-action="DeleteReservation" method="post">
-                                    <input type="hidden" name="index" value="@Model.IndexOf(reservation)" />
-                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                </form>
+                                <a asp-controller="Reservation" asp-action="DeleteReservation" asp-route-ReservationID="@reservation.ReservationID" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
                     }
@@ -110,6 +106,9 @@
             </table>
         </div>
     </div>
+  
+    <label id="lblTesting">@ViewBag.TestingMessage</label>
+    <label id="lblDelete">@ViewBag.DeleteMessage</label>
 
     </body>
 </html>
